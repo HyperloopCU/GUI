@@ -1,6 +1,6 @@
 import React from 'react';
-import ESTOP from './Components/ESTOP/ESTOP.js'; 
-import Centerpiece from './Components/Centerpiece/Centerpiece.js'; 
+import ESTOP from './Components/ESTOP'; 
+import Centerpiece from './Components/Centerpiece'; 
 
 const App = () => (<div><Centerpiece></Centerpiece></div>);
 

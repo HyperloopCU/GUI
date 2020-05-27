@@ -4,6 +4,8 @@ import './ListFormat.css';
 import { currentSpeedUpdater, currentPositionUpdater, currentFidsUpdater, encoderUpdater, pnumaticUpdater,convertKeyToName } from "../../../HelperFunctions/helperFunctions.js";
 
 const ListFormat = props => {
+
+    // create all states 
     const [speed, setSpeed] = React.useState(null);
     const [pos, setPos] = React.useState(null);
     const [fids, setFids] = React.useState({});
@@ -11,7 +13,7 @@ const ListFormat = props => {
     const [pnumatic, setPnumatic] = React.useState({});
 
     React.useEffect(() => {
-        // for final version 
+        // Setup the state updaters 
         currentSpeedUpdater(setSpeed);
         currentPositionUpdater(setPos);
         currentFidsUpdater(setFids);
