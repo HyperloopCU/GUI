@@ -40,6 +40,12 @@ const emergencyStop = () => {
     return true;
 }
 
+const nextState = () => {
+    console.log("Next state");
+    return true;
+}
+
+
 
 module.exports = {
     currentSpeedUpdater,
@@ -49,5 +55,6 @@ module.exports = {
     pnumaticUpdater,
     convertKeyToName,
     emergencyStop,
+    nextState,
     autoStateUpdater
 }

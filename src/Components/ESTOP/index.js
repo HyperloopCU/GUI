@@ -1,6 +1,7 @@
 import React from 'react';
 import {emergencyStop} from "../../HelperFunctions/helperFunctions.js";
+import Button from "../Button"
 
-const ESTOP = props=>(<button onClick={()=>emergencyStop()}>Trigger ESTOP</button>);
+const ESTOP = () => (<Button onClick={()=>emergencyStop()} content = "ESTOP" color = "red"/>)
 
 export default ESTOP;
