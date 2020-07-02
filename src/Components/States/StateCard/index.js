@@ -21,7 +21,12 @@ const unselectedStyle = {
 
 const StateCard = (props) => {
     console.log(props);
-    return (<div style={props.selected ? { ...defaultStyle, ...selectedStyle } : { ...defaultStyle, ...unselectedStyle }}><p>{props.title}</p></div>)
+    return (<div style={props.selected ? { ...defaultStyle, ...selectedStyle } : { ...defaultStyle, ...unselectedStyle }}>
+        <p>{props.title}</p>
+        {props.subs.map(sub => {
+            return <p>{sub.name}</p>
+        })}
+    </div>)
 }
 
 export default StateCard;

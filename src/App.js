@@ -5,6 +5,6 @@ import Centerpiece from './Components/Centerpiece';
 import AutoDisplay from './Components/AutoDisplay';
 import States from './Components/States';
 
-const App = () => (<div><States selected='arm'></States></div>);
+const App = () => (<div><States selected='standby'></States></div>);
 
 export default App;
