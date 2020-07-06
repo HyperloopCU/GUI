@@ -1,24 +1,7 @@
-// socket (for now temp will be replaced witha real sockets on function for now just retuns a random number)
-let stateCounter = 0;
+import socket from "./localTesting.js"; // temp from testing 
 
-const socket = {
-    on: (socketName, stateSetter) => {
-        if(socketName === "getFids" || socketName === "getPnumatic") {
-            stateSetter({topLeft: Math.floor(Math.random() * 20), topRight: Math.floor(Math.random() * 20), botLeft: Math.floor(Math.random() * 20), botRight: Math.floor(Math.random() * 20)});
-        }
-        else if(socketName === "getAutoState") {
-            const possibleStates = ["Soft Start","Sensor Check","Hard Stop"];
-            stateCounter++;
-            if (stateCounter === 2) {
-                stateCounter = 0;
-            }
-            stateSetter(possibleStates[stateCounter]);
-        }
-        else {
-            stateSetter(Math.floor(Math.random() * 20))
-        }
-    }
-}
+// const socket = {on:()=>console.log("hey")}
+
 
 // general updates state
 const genericStateUpdater = (socketName, stateSetter) => socket.on(socketName, stateSetter);
@@ -47,7 +30,7 @@ const nextState = () => {
 
 
 
-module.exports = {
+export  {
     currentSpeedUpdater,
     currentPositionUpdater,
     currentFidsUpdater,

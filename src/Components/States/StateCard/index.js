@@ -19,12 +19,12 @@ const unselectedStyle = {
     'fontWeight': '300'
 }
 
-const StateCard = (props) => {
-    console.log(props);
-    return (<div style={props.selected ? { ...defaultStyle, ...selectedStyle } : { ...defaultStyle, ...unselectedStyle }}>
-        <p>{props.title}</p>
-        {props.subs.map(sub => {
-            return <p>{sub.name}</p>
+//{selected ? { ...defaultStyle, ...selectedStyle } : { ...defaultStyle, ...unselectedStyle }}
+const StateCard = ({selected,title,subs}) => {
+    return (<div style={defaultStyle}>
+        <p style = {selected === null ? selectedStyle:unselectedStyle}>{title}</p>
+        {subs.map((sub,i) => {
+            return <p style = {selected === i ? selectedStyle:unselectedStyle}>{sub.name}</p>
         })}
     </div>)
 }
