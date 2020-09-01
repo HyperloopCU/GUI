@@ -10,9 +10,9 @@ const AutoDisplay = ({ manual }) => {
 
   React.useEffect(() => {
     autoStateUpdater(changeState);
-    document.addEventListener('click',e=>{
-       autoStateUpdater(changeState);
-    });
+    // document.addEventListener('click',e=>{
+    //    autoStateUpdater(changeState);
+    // });
   }, []);
 
 
