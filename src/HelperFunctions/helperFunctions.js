@@ -1,7 +1,6 @@
-import socket from "./localTesting.js"; // temp from testing 
-
-// const socket = {on:()=>console.log("hey")}
-
+// import socket from "./localTesting.js"; // temp from testing 
+import io from 'socket.io-client';
+const socket = io(); 
 
 // general updates state
 const genericStateUpdater = (socketName, stateSetter) => socket.on(socketName, stateSetter);
@@ -20,11 +19,13 @@ const convertKeyToName = str => str.split("").map((x, i) => x === x.toUpperCase(
 
 const emergencyStop = () => {
     console.log("Pod is stopping");
+    socket.emit("setEstop",true); 
     return true;
 }
 
 const nextState = () => {
     console.log("Next state");
+    socket.emit("setNext",true); 
     return true;
 }
 
