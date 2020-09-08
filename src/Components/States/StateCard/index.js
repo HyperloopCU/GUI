@@ -14,13 +14,16 @@ const selectedStyle = {
     'background': "#00FF00",
     'fontWeight': '700'
 }
+const selectedStylePending = {
+    'background': "#d6e212",
+    'fontWeight': '700'
+}
 
 const unselectedStyle = {
     'background': "#FFFFFF",
     'fontWeight': '300'
 }
 
-//{selected ? { ...defaultStyle, ...selectedStyle } : { ...defaultStyle, ...unselectedStyle }}
 const StateCard = ({selected,title,subs}) => {
     return (<div style={defaultStyle}>
         <p><span style = {selected === null ? selectedStyle:unselectedStyle}>{title}</span></p>
