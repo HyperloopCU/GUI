@@ -5,19 +5,14 @@ import os
 
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
-# print("hey whats up " + os.getcwd())
-
 with open("states.json") as f:
     possibleStates = json.load(f)["array"]
-
 
 def Estop(data=True):
     print("ESTOP something went wrong")
 
 def next(data=True):
     print("next")
-
-
 
 def incrementState():
     for i in range(len(possibleStates)):
@@ -43,9 +38,9 @@ socket = HLSocketHandler("http://localhost:8080/",getEstop=Estop,getNext=next)
 for i in range(10):
     print("{} is being sent".format(i))
     nextState = incrementState()
+    socket.setAutoState(nextState)
     socket.setFids(i,i,i,i)
     socket.setPnumatic(i,i,i,i)
-    socket.setAutoState(nextState)
     socket.setSpeed(i)
     socket.setEncoder(i)
     time.sleep(1)

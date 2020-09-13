@@ -20,17 +20,6 @@ const ListFormat = props => {
         encoderUpdater(setEncoder);
         pnumaticUpdater(setPnumatic);
 
-        // this click listner is only for testing updating the socket listner will be in the helper function when a backend is implemented 
-        //uncomment to show functionality 
-
-
-        // document.addEventListener("click", () => {
-        //     currentSpeedUpdater(setSpeed);
-        //     currentPositionUpdater(setPos);
-        //     currentFidsUpdater(setFids);
-        //     encoderUpdater(setEncoder);
-        //     pnumaticUpdater(setPnumatic);
-        // });
 
     }, []);
 
