@@ -11,16 +11,13 @@ app.use(express.static(path.join(__dirname, 'build')));
 // let client = redis.createClient(6379, 'redis'); 
 
 const brodcastAndPersist = async (name,data,socket)=>{
-    // console.error(data); 
     socket.broadcast.emit(name,data); 
     TestDataPoint.createBatch(name.substring(3),data); // implement redis stuff here 
-    // const dataps = await TestDataPoint.findAll(); 
-    // await console.log(dataps); 
 }
 
 app.get("/",(req,res)=>res.sendFile(path.join(__dirname, 'build', 'index.html')) ); 
 
-app.get("/readData",async (req,res)=>console.log(await TestDataPoint.findAll()))
+app.get("/readData",async (req,res)=>console.log(await TestDataPoint.findAll())) // run curl localhost:8080/readData and it will print out all the data points (this is for testing)
 
 io.on("connection", socket=>{
     // console.log("A user has connected"); 

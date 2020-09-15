@@ -21,7 +21,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "rm -Rf ./backend/build/ && react-scripts build && mv ./build/ ./backend/ && rm -f ./backend/package.json && cp ./package.json ./backend/package.json",
+    "build": "rm -Rf ./backend/build/ && react-scripts build && mv ./build/ ./backend/ ",
     "test": "python3 ./python_frontend/SocketTester.py",
     "eject": "react-scripts eject",
     "serverStart": "node ./backend/index.js"
