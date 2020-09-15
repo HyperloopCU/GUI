@@ -2,19 +2,34 @@ const express = require("express");
 const app = express();  
 const http = require("http").createServer(app); 
 const path = require('path');
+const redis = require("redis");
 const io = require("socket.io")(http);
+const {TestDataPoint} = require("./models"); 
+
 app.use(express.static(path.join(__dirname, 'build')));
 
-app.get("/",(req,res)=>res.sendFile(path.join(__dirname, 'build', 'index.html')) )
+// let client = redis.createClient(6379, 'redis'); 
+
+const brodcastAndPersist = async (name,data,socket)=>{
+    // console.error(data); 
+    socket.broadcast.emit(name,data); 
+    TestDataPoint.createBatch(name.substring(3),data); // implement redis stuff here 
+    // const dataps = await TestDataPoint.findAll(); 
+    // await console.log(dataps); 
+}
+
+app.get("/",(req,res)=>res.sendFile(path.join(__dirname, 'build', 'index.html')) ); 
+
+app.get("/readData",async (req,res)=>console.log(await TestDataPoint.findAll()))
 
 io.on("connection", socket=>{
     // console.log("A user has connected"); 
-    socket.on("setSpeed",data=>socket.broadcast.emit("getSpeed",data));
-    socket.on("setPosition",data=>socket.broadcast.emit("getPosition",data));
-    socket.on("setFids",data=>socket.broadcast.emit("getFids",data));
-    socket.on("setEncoder",data=>socket.broadcast.emit("getEncoder",data));
-    socket.on("setPnumatic",data=>socket.broadcast.emit("getPnumatic",data));
-    socket.on("setAutoState",data=>socket.broadcast.emit("getAutoState",data));
+    socket.on("setSpeed",data=>brodcastAndPersist("getSpeed",data,socket));
+    socket.on("setPosition",data=>brodcastAndPersist("getPosition",data,socket));
+    socket.on("setFids",data=>brodcastAndPersist("getFids",data,socket));
+    socket.on("setEncoder",data=>brodcastAndPersist("getEncoder",data,socket));
+    socket.on("setPnumatic",data=>brodcastAndPersist("getPnumatic",data,socket));
+    socket.on("setAutoState",data=>brodcastAndPersist("getAutoState",data,socket));
     socket.on("setEstop",data=>socket.broadcast.emit("getEstop",data)); 
     socket.on("setNext",data=>socket.broadcast.emit("getNext",data)); 
 }); 

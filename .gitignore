@@ -13,6 +13,7 @@
 # production
 /build
 backend/build
+redis-data
 
 # misc
 .DS_Store

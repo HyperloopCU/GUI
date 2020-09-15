@@ -45,6 +45,9 @@ for i in range(10):
     socket.setEncoder(i)
     time.sleep(1)
 
+# socket.setSpeed(15)
+
+
 
     
 

@@ -10,14 +10,18 @@
     "express": "^4.17.1",
     "fontsource-roboto": "^2.1.4",
     "path": "^0.12.7",
+    "pg": "^8.3.3",
+    "pg-hstore": "^2.3.3",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "^3.4.3",
+    "redis": "^3.0.2",
+    "sequelize": "^6.3.5",
     "socket.io": "^2.3.0"
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "rm -Rf ./backend/build/ && react-scripts build && mv ./build/ ./backend/",
+    "build": "rm -Rf ./backend/build/ && react-scripts build && mv ./build/ ./backend/ && rm -f ./backend/package.json && cp ./package.json ./backend/package.json",
     "test": "python3 ./python_frontend/SocketTester.py",
     "eject": "react-scripts eject",
     "serverStart": "node ./backend/index.js"
