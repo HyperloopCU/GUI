@@ -1,3 +1,3 @@
-const {sync} = require("./models"); 
+import { sync } from "./models.js"; 
 
 sync(); 

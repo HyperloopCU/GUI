@@ -1,5 +1,7 @@
 // import socket from "./localTesting.js"; // temp from testing 
 import io from 'socket.io-client';
+import react from 'react'; 
+import axios from "axios";
 const socket = io(); 
 
 // general updates state
@@ -30,6 +32,27 @@ const nextState = () => {
 }
 
 
+const nameHook = () => {
+    const [names, setNames] = react.useState([]);
+    const [loading, setLoading] = react.useState(true);
+
+    react.useEffect(() => {
+        const getNames = async () => {
+            try {
+                let {data} = await axios.get("http://localhost:8080/getNames");
+                setNames(data.sort());
+                setLoading(false);
+            } catch { setLoading("Invalid"); }
+        }
+        getNames();
+    }, []);
+
+    return [names, loading];
+
+
+}
+
+
 
 export  {
     currentSpeedUpdater,
@@ -40,5 +63,6 @@ export  {
     convertKeyToName,
     emergencyStop,
     nextState,
-    autoStateUpdater
+    autoStateUpdater,
+    nameHook,
 }
