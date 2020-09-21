@@ -7,6 +7,11 @@ const app = express();
 const http = createServer(app);
 const io = Sock(http);
 
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', "*");
+    next();
+});
+
 const moduleURL = new URL(import.meta.url);
 const __dirname = dirname(moduleURL.pathname);
 app.use(express.static(join(__dirname, 'build')));

@@ -1,6 +1,5 @@
 import Seq from "sequelize";
 const { Sequelize, DataTypes, Op } = Seq; 
-// const { Sequelize, DataTypes, Op } = require("sequelize"); 
 const sequelize = new Sequelize("CUHyperloopTest", "hyperloop-test", "F2ryGyixnKBBIG8D", {
     host: '35.237.126.240',
     dialect: 'postgres'
