@@ -1,9 +1,13 @@
 import React from 'react';
 import { Grid } from '@material-ui/core';
+import { Link } from "react-router-dom";
 import ESTOP from '../ESTOP';
 import Next from '../Next';
 import Centerpiece from '../Centerpiece';
 import AutoDisplay from '../AutoDisplay';
+import Header from '../Header';
+
+
 
 
 const Splash = () => (
@@ -12,10 +16,11 @@ const Splash = () => (
             style={{
                 display: "flex",
                 justifyContent: "center",
-                alignItems: "center"
+                alignItems: "center",
+                paddingBottom: "45px"
             }}
         >
-            <h1 styles={{ textAlign: "center", fontFamily: 'Roboto, sans-serif' }}>Hyperloop GUI</h1>
+            <Header isServer={true} />
         </div>
         <Grid container direction="row" justify="center" alignItems="flex-start">
             <Grid container item xs={1} spacing={3} direction="column">
