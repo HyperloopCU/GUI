@@ -13,6 +13,7 @@
   },
   "scripts": {
     "start": "node index.js",
-    "migrate": "node makeMigration.js"
+    "migrate": "node makeMigration.js",
+    "forceMigrate": "node makeMigration.js force"
   }
 }

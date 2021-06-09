@@ -10,8 +10,10 @@ const genericStateUpdater = (socketName, stateSetter) => socket.on(socketName, s
 //update states for specific use cases
 const currentSpeedUpdater = speedSetter => genericStateUpdater("getSpeed", speedSetter);
 const currentPositionUpdater = postionSetter => genericStateUpdater("getPosition", postionSetter);
-const currentFidsUpdater = fidSetter => genericStateUpdater("getFids", fidSetter)
+const currentFid1Updater = fidSetter => genericStateUpdater("getFid1", fidSetter);
+const currentFid2Updater = fidSetter => genericStateUpdater("getFid2", fidSetter);
 const encoderUpdater = encoderSetter => genericStateUpdater("getEncoder", encoderSetter);
+const loadCellUpdater = loadCellSetter => genericStateUpdater("getLoadCell", loadCellSetter);
 const pnumaticUpdater = pnumaticSetter => genericStateUpdater("getPnumatic", pnumaticSetter);
 const autoStateUpdater = autoStateSetter => genericStateUpdater("getAutoState", autoStateSetter);
 // converts key names of type fooBarFooBar to Foo Bar Foo Bar
@@ -57,9 +59,11 @@ const nameHook = () => {
 export  {
     currentSpeedUpdater,
     currentPositionUpdater,
-    currentFidsUpdater,
+    currentFid1Updater,
+    currentFid2Updater,
     encoderUpdater,
     pnumaticUpdater,
+    loadCellUpdater,
     convertKeyToName,
     emergencyStop,
     nextState,

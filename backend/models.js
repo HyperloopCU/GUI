@@ -44,7 +44,7 @@ TestDataPoint.getData = async (start, end, names) => {
 
 }
 
-const sync = async () => await sequelize.sync({ force: true });
+const sync = async (force=false) => await sequelize.sync({ force,alter:!force });
 
 export default TestDataPoint; 
 export {sync}; 

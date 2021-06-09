@@ -1,28 +1,48 @@
+// const states = [
+//     {
+//         name: 'Startup',
+//         automatic: true,
+//         subs: [
+//             { name: 'Arm', automatic: true },
+//             { name: 'Standby', automatic: false }
+//         ]
+//     },
+//     {
+//         name: 'Crawl',
+//         automatic: true,
+//         subs: [
+//             {
+//                 name: 'Standby',
+//                 automatic: false
+//             }
+//         ]
+
+//     },
+//     {
+//         name: 'Accelerate',
+//         automatic: true,
+//         subs: [{ name: 'Coast', automatic: true }, { name: 'Soft Stop', automatic: true }, { name: 'Wait', automatic: true }]
+
+//     }
+// ]
 const states = [
     {
-        name: 'Startup',
+        name: 'Shutdown',
         automatic: true,
         subs: [
-            { name: 'Arm', automatic: true },
             { name: 'Standby', automatic: false }
         ]
     },
     {
-        name: 'Crawl',
+        name: 'Accelerate',
         automatic: true,
-        subs: [
-            {
-                name: 'Standby',
-                automatic: false
-            }
-        ]
+        subs: [{ name: 'Coast', automatic: true }]
 
     },
     {
-        name: 'Accelerate',
+        name: 'Brake',
         automatic: true,
-        subs: [{ name: 'Coast', automatic: true }, { name: 'Soft Stop', automatic: true }, { name: 'Wait', automatic: true }]
-
+        subs:[]
     }
 ]
 
