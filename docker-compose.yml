@@ -1,0 +1,28 @@
+  version: '3'
+    
+  services:
+    redis:
+      container_name: redis
+      image: redis:latest
+      environment:
+        - POSTGRES_DB=postgres
+        - POSTGRES_USER=postgres
+        - POSTGRES_PASSWORD=postgres
+      volumes:
+        - ./redis-data:/data
+      ports:
+        - 6379:6379
+      expose:
+        - 6379
+    web:
+      build:
+        context: ./backend
+        dockerfile: ../DockerFile
+      container_name: node_backend
+      command: node /code/index.js
+      ports:
+        - "8080:8080"
+      expose:
+        - 6379
+      depends_on:
+        - redis

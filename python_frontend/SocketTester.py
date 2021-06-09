@@ -2,6 +2,7 @@ from SocketHandler import HLSocketHandler
 import time
 import json 
 import os
+import random 
 
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
@@ -35,15 +36,18 @@ def incrementState():
 
 socket = HLSocketHandler("http://localhost:8080/",getEstop=Estop,getNext=next)
 
-for i in range(10):
+for i in range(100):
     print("{} is being sent".format(i))
     nextState = incrementState()
     socket.setAutoState(nextState)
-    socket.setFids(i,i,i,i)
-    socket.setPnumatic(i,i,i,i)
-    socket.setSpeed(i)
-    socket.setEncoder(i)
-    time.sleep(1)
+    socket.setFids(random.randint(1,101),random.randint(1,101),random.randint(1,101),random.randint(1,101))
+    socket.setPnumatic(random.randint(1,101),random.randint(1,101),random.randint(1,101),random.randint(1,101))
+    socket.setSpeed(random.randint(1,101))
+    socket.setEncoder(random.randint(1,101))
+    # time.sleep(1)
+
+# socket.setSpeed(15)
+
 
 
     

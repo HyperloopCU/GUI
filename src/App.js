@@ -1,11 +1,24 @@
 import React from 'react';
-// import ESTOP from './Components/ESTOP';
-// import Next from './Components/Next';
-// import Centerpiece from './Components/Centerpiece';
-// import AutoDisplay from './Components/AutoDisplay';
 import Splash from './Components/Splash';
+import SearchLogs from './Components/SearchLogs'; 
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+} from "react-router-dom";
 
-// const App = () => (<div><ESTOP /> <Next /> <Centerpiece /> <AutoDisplay manual={false}/></div>);
-const App = () => (<Splash />);
+const App = () => (
+    <Router>
+        <Switch>
+            <Route exact path="/">
+                <Splash />
+            </Route>
+            <Route path="/searchLogs">
+                <SearchLogs />
+            </Route>
+        </Switch>
+    </Router>
+    
+);
 
 export default App;

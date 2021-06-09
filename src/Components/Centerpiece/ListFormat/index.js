@@ -1,23 +1,25 @@
 import React from 'react';
 import ListComponent from './ListComponent.js';
 import './ListFormat.css';
-import { currentSpeedUpdater, currentPositionUpdater, currentFidsUpdater, encoderUpdater, pnumaticUpdater,convertKeyToName } from "../../../HelperFunctions/helperFunctions.js";
+import { currentSpeedUpdater, currentPositionUpdater, currentFid1Updater,currentFid2Updater, loadCellUpdater, pnumaticUpdater,convertKeyToName } from "../../../HelperFunctions/helperFunctions.js";
 
-const ListFormat = props => {
+const ListFormat = () => {
 
     // create all states 
     const [speed, setSpeed] = React.useState(null);
     const [pos, setPos] = React.useState(null);
-    const [fids, setFids] = React.useState({});
-    const [encoder, setEncoder] = React.useState(null);
-    const [pnumatic, setPnumatic] = React.useState({});
+    const [fid1, setFid1] = React.useState(null);
+    const [fid2, setFid2] = React.useState(null);
+    const [loadCell, setLoadCell] = React.useState(null);
+    const [pnumatic, setPnumatic] = React.useState(null);
 
     React.useEffect(() => {
         // Setup the state updaters 
         currentSpeedUpdater(setSpeed);
         currentPositionUpdater(setPos);
-        currentFidsUpdater(setFids);
-        encoderUpdater(setEncoder);
+        currentFid1Updater(setFid1);
+        currentFid2Updater(setFid2);
+        loadCellUpdater(setLoadCell);
         pnumaticUpdater(setPnumatic);
 
 
@@ -26,10 +28,11 @@ const ListFormat = props => {
     return (
         <ul className="TopList">
             <ListComponent name="Speed" value={speed}></ListComponent>
-            <ListComponent name="Distance" value={pos}></ListComponent>
-            {Object.entries(fids).map(x => <ListComponent name={`${convertKeyToName(x[0])} Fidutial Sensor`} value={x[1]}></ListComponent>)}
-            {Object.entries(pnumatic).map(x => <ListComponent name={`${convertKeyToName(x[0])} Pnumatic Sensor`} value={x[1]}></ListComponent>)}
-            <ListComponent name="Encoder" value={encoder}></ListComponent>
+            <ListComponent name="Position" value={pos}></ListComponent>
+            <ListComponent name="Fidutial Sensor 1" value={fid1}></ListComponent>
+            <ListComponent name="Fidutial Sensor 2" value={fid2}></ListComponent>
+            <ListComponent name="Pnumatic Sensor" value={pnumatic}></ListComponent>
+            <ListComponent name="Load Cell" value={loadCell}></ListComponent>
         </ul>
     )
 };

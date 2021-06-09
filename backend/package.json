@@ -1,0 +1,19 @@
+{
+  "name": "gui",
+  "version": "0.1.0",
+  "private": true,
+  "type":"module",
+  "dependencies": {
+    "path": "^0.12.7",
+    "express": "^4.17.1",
+    "socket.io": "^2.3.0",
+    "pg": "^8.3.3",
+    "pg-hstore": "^2.3.3",
+    "sequelize": "^6.3.5"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "migrate": "node makeMigration.js",
+    "forceMigrate": "node makeMigration.js force"
+  }
+}
