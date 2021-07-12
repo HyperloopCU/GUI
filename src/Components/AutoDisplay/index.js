@@ -9,7 +9,7 @@ const AutoDisplay = ({ manual }) => {
   const [currentState, changeState] = React.useState([0,null]);
 
   React.useEffect(() => {
-    autoStateUpdater(changeState);
+    autoStateUpdater((d)=>changeState(d.split(",").map(x=>{const a = parseInt(x); if (a < 0) return null; else return a;})));
     // document.addEventListener('click',e=>{
     //    autoStateUpdater(changeState);
     // });

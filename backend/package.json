@@ -2,7 +2,7 @@
   "name": "gui",
   "version": "0.1.0",
   "private": true,
-  "type":"module",
+  "type": "module",
   "dependencies": {
     "path": "^0.12.7",
     "express": "^4.17.1",
