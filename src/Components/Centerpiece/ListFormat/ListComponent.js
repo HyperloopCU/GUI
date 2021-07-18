@@ -1,6 +1,6 @@
 import React from 'react';
 
 
-const ListComponent = ({ name, value }) => (<li>{name} : {value}</li>);
+const ListComponent = ({ name, value }) => (<li><b>{name}:</b> {value}</li>);
 
 export default ListComponent; 

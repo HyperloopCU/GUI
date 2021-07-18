@@ -41,7 +41,7 @@ io.on("connection", socket => {
     socket.on("setLoadCell", data => brodcastAndPersist("getLoadCell", data, socket));
     socket.on("setPnumatic", data => brodcastAndPersist("getPnumatic", data, socket));
     socket.on("setAutoState", data => socket.broadcast.emit("getAutoState", data));
-    socket.on("Estop", data => socket.broadcast.emit("setEstop", data));
+    socket.on("setEstop", data => socket.broadcast.emit("setEstop", data));
     socket.on("setNext", data => socket.broadcast.emit("setNext", data));
 });
 
